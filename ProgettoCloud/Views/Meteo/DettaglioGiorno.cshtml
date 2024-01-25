@@ -1,0 +1,40 @@
+﻿@model ProgettoCloud.ViewModels.MeteoDettaglioGiornoViewModel
+@{
+    Layout = null;
+}
+<html>
+    <body>
+        <h3>Data: @Model.Giorno.giorno</h3>
+        <table border="1">
+            <tr>
+                <th>Fascia</th>
+                <th>Ore</th>
+                <th colspan="2"></th>
+                <th>Probabilità Precipitazioni</th>
+                <th>Vento in Quota</th>
+                <th>Direzione Vento in Quota</th>                
+                <th>Intensità Vento in Quota</th>
+                <th>Intensità Vento a Valle</th>
+                <th>Direzione Vento a Valle</th>
+                <th>Zero Termico</th>
+            </tr>
+        @foreach (var fascia in Model.Giorno.fasce)
+        {
+            <tr>
+                <td>@fascia.fasciaPer</td>
+                <td>@fascia.fasciaOre</td>
+                <td><img src="@fascia.icona" /></td>
+                <td>@fascia.descIcona</td>
+                <td>@fascia.descPrecProb</td>                                       
+                <td><img src="@fascia.iconaVentoQuota" /></td>
+                <td>@fascia.descVentoDirQuota</td>
+                <td>@fascia.descVentoIntQuota</td>
+                <td>@fascia.descVentoIntValle</td>
+                <td>@fascia.descVentoDirValle</td> 
+                <td>@fascia.zeroTermico</td>
+            </tr>
+
+        }
+        </table>
+    </body>
+</html>

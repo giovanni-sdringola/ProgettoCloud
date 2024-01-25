@@ -1,0 +1,51 @@
+﻿@model ProgettoCloud.ViewModels.MeteoMostraMeteoViewModel;
+@{
+    Layout = null;
+}
+
+<html>
+    <head>
+        <style>
+            .nome{
+                text-align:center;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="nome">Meteo</h2>
+        <h3>@Model.Descrizione</h3>
+    @foreach(var previsione in Model.Previsioni)
+    {
+
+        <h3>Località: @previsione.localita Quota: @previsione.quota</h3>
+        
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th></th>
+                    <th>Data</th>
+                    <th colspan="2"></th>
+                    <th>Temperatura Minima</th>
+                    <th>Temperatura Massima</th>
+                    <th>Descrizione</th>
+                  
+                </tr>
+                @foreach (var giorno in previsione.giorni)
+                {
+                    <tr>
+                        <td><a href="/Meteo/DettaglioGiorno?Data=@giorno.giorno">Vai a dettaglio</a></td>
+                        <td>@giorno.giorno</td>
+                        <td><img src=@giorno.icona /></td>
+                        <td>@giorno.descIcona</td>
+                        <td>@giorno.tMinGiorno</td>
+                        <td>@giorno.tMaxGiorno</td>
+                        <td>@giorno.testoGiorno</td>
+                       
+                    </tr>
+                }                
+            </tbody>
+        </table>
+    }
+    
+    </body>
+</html>

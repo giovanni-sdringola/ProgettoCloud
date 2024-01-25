@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  progettocloud:
+    image: ${DOCKER_REGISTRY-}progettocloud
+    build:
+      context: .
+      dockerfile: ProgettoCloud/Dockerfile
+
+  soapservice:
+    image: ${DOCKER_REGISTRY-}soapservice
+    build:
+      context: .
+      dockerfile: SoapConverter/Dockerfile
+
